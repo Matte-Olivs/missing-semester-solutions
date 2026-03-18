@@ -34,8 +34,11 @@ Ciao $ mondo
 
 The shell has three standard streams: stdin (0), stdout (1), and stderr (2). Run ls /nonexistent /tmp and redirect stdout to one file and stderr to another. How would you redirect both to the same file? See Redirections. 
 ```
-- Separate files:  ls /nonexistent /tmp 1>file1.txt 2>file2.txt
-- Both in the same file:  ls /nonexistent /tmp &>samefile.txt
+Separate files:
+ls /nonexistent /tmp 1>file1.txt 2>file2.txt
+
+Both in the same file:
+ls /nonexistent /tmp &>samefile.txt
 ```
 
 
@@ -116,7 +119,9 @@ Use pipes to find the 5 most common file extensions in your home directory. (Hin
 
 ```
 find ~ -type f -name "*.*" → find each file in the home directory ~ 
+
 awk -F. '{print $NF}'  → separate in columns using “.” (file.txt has file as the first column and txt as the second column). $NF takes the last “.” of the file to ensure it only extracts the file extensions.
+
 find ~ -type f -name "*.*" | awk -F. '{print $NF}' | sort | uniq -c | sort -rn | head -5
 ```
 
@@ -129,13 +134,13 @@ find . -name "*.sh" -type f -print0 | xargs -0 wc -l
 
 Use curl to fetch the HTML of the course website (https://missing.csail.mit.edu/) and pipe it to grep to count how many lectures are listed. (Hint: look for a pattern that appears once per lecture; use curl -s to silence the progress output.) 
 ```
-- curl -s https://missing.csail.mit.edu/ | grep -c '<a href="/2026/.*">'
+curl -s https://missing.csail.mit.edu/ | grep -c '<a href="/2026/.*">'
 ```
 
 
 jq is a powerful tool for processing JSON data. Fetch the sample data at https://microsoftedge.github.io/Demos/json-dummy-data/64KB.json with curl and use jq to extract just the names of people whose version is greater than 6. (Hint: pipe to jq . first to see the structure; then try jq '.[] | select(...) | .name') 
 ```
-- curl -s https://microsoftedge.github.io/Demos/json-dummy-data/64KB.json | jq '.[] | select(.version >= 6.0) | .name'
+curl -s https://microsoftedge.github.io/Demos/json-dummy-data/64KB.json | jq '.[] | select(.version >= 6.0) | .name'
 ```
 
 
