@@ -1,3 +1,5 @@
+## Course Overview + Introduction to the Shell
+
 What does the -l flag to ls do? Run ls -l / and examine the output. What do the first 10 characters of each line mean? (Hint: man ls):
 - The -l flag returns the name of each file in the current directory along with informations about them: permissions, user who created the file, date and hour of creation.
 
