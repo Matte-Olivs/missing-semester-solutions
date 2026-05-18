@@ -8,7 +8,7 @@ In the command find ~/Downloads -type f -name "*.zip" -mtime +30, the *.zip is a
 - A “glob” is a way for the interpreter to autocomplete the file path and find each file ending the specified file extension, such as *.zip or *.txt.
 
 
-What’s the difference between ``` 'single quotes' ```, ``` "double quotes" ```, and ``` $'ANSI quotes' ```? Write a command that echoes a string containing a literal $, a !, and a newline character. See Quoting.
+What’s the difference between ``` 'single quotes' ```, ``` "double quotes" ```, and ``` $'ANSI quotes' ```? Write a command that echoes a string containing a literal $, a !, and a newline character. See Quoting.```  
 - Enclosing characters in single quotes (‘'’) preserves the literal value of each character within the quotes.
 - Enclosing characters in double quotes (‘"’) preserves the literal value of all characters within the quotes, with the exception of ‘$’, ‘`’, ‘\’, and, when history expansion is enabled, ‘!’.
 - Character sequences of the form $'string' are treated as a special kind of single quotes. The sequence expands to string, with backslash-escaped characters in string replaced as specified by the ANSI C standard.
@@ -35,13 +35,10 @@ Ciao $ mondo
 
 
 The shell has three standard streams: stdin (0), stdout (1), and stderr (2). Run ls /nonexistent /tmp and redirect stdout to one file and stderr to another. How would you redirect both to the same file? See Redirections. 
-```
-Separate files:
-ls /nonexistent /tmp 1>file1.txt 2>file2.txt
-
-Both in the same file:
-ls /nonexistent /tmp &>samefile.txt
-```
+- Separate files:  
+```ls /nonexistent /tmp 1>file1.txt 2>file2.txt```
+- Both in the same file:  
+```ls /nonexistent /tmp &>samefile.txt```
 
 
 $? holds the exit status of the last command (0 = success). && runs the next command only if the previous succeeded; || runs it only if the previous failed. Write a one-liner that creates /tmp/mydir only if it doesn’t already exist. See Exit Status.
@@ -87,7 +84,7 @@ fi
 ```
 
 
-Modify the flaky test script from the lecture to accept the test command as an argument instead of hardcoding cargo test my_test. (Hint: $1 or $@). See Special Parameters.
+Modify the flaky test script from the lecture to accept the test command as an argument instead of hardcoding cargo test my_test. (Hint: ```$1 or $@```). See Special Parameters.
 
 ```
 #!/bin/bash
@@ -119,38 +116,41 @@ echo "Full log: $LOGFILE"
 
 Use pipes to find the 5 most common file extensions in your home directory. (Hint: combine find, grep or sed or awk, sort, uniq -c, and head.) 
 
+- find each file in the home directory ~: ```find ~ -type f -name "*.*"```
+
+- separate in columns using “.” (file.txt has file as the first column and txt as the second column). $NF takes the last “.” of the file to ensure it only extracts the file extensions: ```awk -F. '{print $NF}'```  
+
+- Final command: 
+
 ```
-find ~ -type f -name "*.*" → find each file in the home directory ~ 
-
-awk -F. '{print $NF}'  → separate in columns using “.” (file.txt has file as the first column and txt as the second column). $NF takes the last “.” of the file to ensure it only extracts the file extensions.
-
 find ~ -type f -name "*.*" | awk -F. '{print $NF}' | sort | uniq -c | sort -rn | head -5
 ```
 
 
 xargs converts lines from stdin into command arguments. Use find and xargs together (not find -exec) to find all .sh files in a directory and count the lines in each with wc -l. Bonus: make it handle filenames with spaces. (Hint: -print0 and -0). See man xargs.
+
 ```
 find . -name "*.sh" -type f -print0 | xargs -0 wc -l
 ```
 
 
 Use curl to fetch the HTML of the course website (https://missing.csail.mit.edu/) and pipe it to grep to count how many lectures are listed. (Hint: look for a pattern that appears once per lecture; use curl -s to silence the progress output.) 
+
 ```
 curl -s https://missing.csail.mit.edu/ | grep -c '<a href="/2026/.*">'
 ```
 
-
 jq is a powerful tool for processing JSON data. Fetch the sample data at https://microsoftedge.github.io/Demos/json-dummy-data/64KB.json with curl and use jq to extract just the names of people whose version is greater than 6. (Hint: pipe to jq . first to see the structure; then try jq '.[] | select(...) | .name') 
+
 ```
 curl -s https://microsoftedge.github.io/Demos/json-dummy-data/64KB.json | jq '.[] | select(.version >= 6.0) | .name'
 ```
 
-
 awk can filter lines based on column values and manipulate output. For example, awk '$3 ~ /pattern/ {$4=""; print}' prints only lines where the third column matches pattern, while omitting the fourth column. Write an awk command that prints only lines where the second column is greater than 100, and swaps the first and third columns. Test with: printf 'a 50 x\nb 150 y\nc 200 z\n' 
+
 ```
 printf 'a 50 x\nb 150 y\nc 200 z\n' | awk '$2 > 100 {print $3, $2, $1}'
 ```
-
 
 Dissect the SSH log pipeline from the lecture: what does each step do? Then build something similar to find your most-used shell commands from ~/.bash_history (or ~/.zsh_history).
 
@@ -186,9 +186,10 @@ postgres,mysql,oracle,dell,ubuntu,inspur,test,admin,user,root
 To find the most used commands from ~/.bash_history:
 ```
 awk -F '[|; ]+' '{print $1}' ~/.bash_history | sort | uniq -c | sort -rn | head
-
-To include the recent history:
-history | awk -F '[|; ]+' '{print $3}' | sort | uniq -c | sort -rn | head
-
-→ not every command present in pipes will be included, just the first one (for ex, awk … | sort will only count awk)
 ```
+
+- to include the recent history:
+```
+history | awk -F '[|; ]+' '{print $3}' | sort | uniq -c | sort -rn | head
+```
+→ not every command present in pipes will be included, just the first one (for ex, awk … | sort will only count awk)
