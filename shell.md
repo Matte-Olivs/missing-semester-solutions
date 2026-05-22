@@ -44,7 +44,7 @@ The shell has three standard streams: stdin (0), stdout (1), and stderr (2). Run
 $? holds the exit status of the last command (0 = success). && runs the next command only if the previous succeeded; || runs it only if the previous failed. Write a one-liner that creates /tmp/mydir only if it doesn’t already exist. See Exit Status.
 
 ```
-#!/bin/bash
+#!/usr/bin/env bash
 [ -d /tmp/mydir ] || mkdir /tmp/mydir
 ```
 
@@ -57,7 +57,7 @@ A child process operates in its own space in memory and can’t change the paren
 Write a script that takes a filename as an argument ($1) and checks whether the file exists using test -f or [ -f ... ]. It should print different messages depending on whether the file exists. See Bash Conditional Expressions. 
 
 ```
-#!/bin/bash
+#!/usr/bin/env bash
 if [ -f “$1” ]; then echo "File found"; else echo "File not found";fi
 ```
 
@@ -73,7 +73,7 @@ What happens if you add -x to the set flags in a script? Try it with a simple sc
 Write a command that copies a file to a backup with today’s date in the filename (e.g., notes.txt → notes_2026-01-12.txt). (Hint: $(date +%Y-%m-%d)). See Command Substitution.
 
 ```
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [ -f "$1.$2" ];
 then 
@@ -87,7 +87,7 @@ fi
 Modify the flaky test script from the lecture to accept the test command as an argument instead of hardcoding cargo test my_test. (Hint: ```$1 or $@```). See Special Parameters.
 
 ```
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 # Start CPU stress in background
