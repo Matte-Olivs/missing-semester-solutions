@@ -183,12 +183,12 @@ postgres,mysql,oracle,dell,ubuntu,inspur,test,admin,user,root
 	-s  paste one line at a time instead of in parallel
 	-d  reuse characters from LIST instead of TABs, using the following list: 	postgres,mysql,oracle,dell,ubuntu,inspur,test,admin,user,root
 
-To find the most used commands from ~/.bash_history:
+→ To find the most used commands from ~/.bash_history:
 ```
 awk -F '[|; ]+' '{print $1}' ~/.bash_history | sort | uniq -c | sort -rn | head
 ```
 
-- to include the recent history:
+→ to include the recent history:
 ```
 history | awk -F '[|; ]+' '{print $3}' | sort | uniq -c | sort -rn | head
 ```
