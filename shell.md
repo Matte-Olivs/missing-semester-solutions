@@ -44,7 +44,6 @@ The shell has three standard streams: stdin (0), stdout (1), and stderr (2). Run
 $? holds the exit status of the last command (0 = success). && runs the next command only if the previous succeeded; || runs it only if the previous failed. Write a one-liner that creates /tmp/mydir only if it doesn’t already exist. See Exit Status.
 
 ```
-#!/usr/bin/env bash
 [ -d /tmp/mydir ] || mkdir /tmp/mydir
 ```
 
@@ -58,6 +57,7 @@ Write a script that takes a filename as an argument ($1) and checks whether the 
 
 ```
 #!/usr/bin/env bash
+
 if [ -f “$1” ]; then echo "File found"; else echo "File not found";fi
 ```
 
