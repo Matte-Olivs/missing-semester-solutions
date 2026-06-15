@@ -147,8 +147,10 @@ pidwait () {
         sleep 1
     done
 }
+```
 
-terminal: pidwait pid
+```
+In the terminal: pidwait pid
 → pid is "$1" = arg1
 ```
 
