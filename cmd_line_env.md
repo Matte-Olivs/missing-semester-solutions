@@ -234,7 +234,12 @@ Host vm
 Use ssh-copy-id vm to copy your ssh key to the server.
 
 Start a webserver in your VM by executing python -m http.server 8888. Access the VM webserver by navigating to http://localhost:9999 in your machine.
-- We can connect using ssh and the -L flag: ```ssh -L 9999:localhost:8888 matteo@192.168.1.57```, then navigate to http://localhost:9999 using any browser.
+- We can connect using ssh and the -L flag: 
+```
+ssh -L 9999:localhost:8888 matteo@192.168.1.57
+
+Then navigate to http://localhost:9999 using any browser.
+```
 
 
 Edit your SSH server config by doing sudo vim /etc/ssh/sshd_config and disable password authentication by editing the value of PasswordAuthentication. Disable root login by editing the value of PermitRootLogin. Restart the ssh service with sudo service sshd restart. Try sshing in again.
