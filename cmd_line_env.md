@@ -209,7 +209,7 @@ syntax on
 " Change the color scheme
 colorscheme desert
 
-" Add numbers to each line on the left-hand side.
+" Add numbers to each line on the left-hand side
 set number
 ```
 
