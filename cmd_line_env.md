@@ -237,10 +237,8 @@ Start a webserver in your VM by executing python -m http.server 8888. Access the
 - We can connect using ssh and the -L flag: 
 ```
 ssh -L 9999:localhost:8888 matteo@192.168.1.57
-
-Then navigate to http://localhost:9999 using any browser.
 ```
-
+- Then navigate to http://localhost:9999 using any browser.
 
 Edit your SSH server config by doing sudo vim /etc/ssh/sshd_config and disable password authentication by editing the value of PasswordAuthentication. Disable root login by editing the value of PermitRootLogin. Restart the ssh service with sudo service sshd restart. Try sshing in again.
 - It works because the local machine is now a trusted host and it identifies itself using the SSH keys. We are not able to access as root: ```ssh root@192.168.1.57``` will give a permission denied message.
