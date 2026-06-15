@@ -196,3 +196,21 @@ matteo@PC-di-Matteo:~/dotfiles$ git commit -m "My dotfiles"
 
 
 Add a configuration for at least one program, e.g. your shell, with some customization (to start off, it can be something as simple as customizing your shell prompt by setting $PS1).
+
+- .vimrc configuration file:
+```
+" Add syntax check
+filetype on
+filetype plugin indent on
+syntax on
+
+" Change the color scheme
+colorscheme desert
+
+" Add numbers to each line on the left-hand side.
+set number
+```
+
+
+Set up a method to install your dotfiles quickly (and without manual effort) on a new machine. This can be as simple as a shell script that calls ln -s for each file, or you could use a specialized utility.
+- I used the specialized unit chezmoi, which allows for easy management of personal configuration files across multiple machines.
