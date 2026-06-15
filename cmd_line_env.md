@@ -216,3 +216,26 @@ set number
 
 Set up a method to install your dotfiles quickly (and without manual effort) on a new machine. This can be as simple as a shell script that calls ln -s for each file, or you could use a specialized utility.
 - I used the specialized unit chezmoi, which allows for easy management of personal configuration files across multiple machines.
+
+
+### Remote Machines (SSH)
+
+Go to ~/.ssh/ and check if you have a pair of SSH keys there. If not, generate them with ssh-keygen -a 100 -t ed25519. It is recommended that you use a password and use ssh-agent, more info here.
+
+Edit .ssh/config to have an entry as follows:
+```
+Host vm
+    User username_goes_here
+    HostName ip_goes_here
+    IdentityFile ~/.ssh/id_ed25519
+    LocalForward 9999 localhost:8888
+```
+
+Use ssh-copy-id vm to copy your ssh key to the server.
+
+Start a webserver in your VM by executing python -m http.server 8888. Access the VM webserver by navigating to http://localhost:9999 in your machine.
+- We can connect using ssh and the -L flag: ```ssh -L 9999:localhost:8888 matteo@192.168.1.57```, then navigate to http://localhost:9999 using any browser.
+
+
+Edit your SSH server config by doing sudo vim /etc/ssh/sshd_config and disable password authentication by editing the value of PasswordAuthentication. Disable root login by editing the value of PermitRootLogin. Restart the ssh service with sudo service sshd restart. Try sshing in again.
+- It works because the local machine is now a trusted host and it identifies itself using the SSH keys. We are not able to access as root: ```ssh root@192.168.1.57``` will give a permission denied message.
