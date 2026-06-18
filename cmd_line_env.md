@@ -242,3 +242,20 @@ ssh -L 9999:localhost:8888 matteo@192.168.1.57
 
 Edit your SSH server config by doing sudo vim /etc/ssh/sshd_config and disable password authentication by editing the value of PasswordAuthentication. Disable root login by editing the value of PermitRootLogin. Restart the ssh service with sudo service sshd restart. Try sshing in again.
 - It works because the local machine is now a trusted host and it identifies itself using the SSH keys. We are not able to access as root: ```ssh root@192.168.1.57``` will give a permission denied message.
+
+
+(Challenge) Install mosh in the VM and establish a connection. Then disconnect the network adapter of the server/VM. Can mosh properly recover from it?
+- It can properly recover from it because mosh is designed to handle intermittent connectivity and disconnections.
+```
+VirtualBox → Network → Connected to: not attached
+
+mosh: Last contact 22 seconds ago. [To quit: Ctrl-^ .]
+
+→ Reconnecting the network adapter re-establishes the connection.
+```
+
+
+(Challenge) Look into what the -N and -f flags do in ssh and figure out a command to achieve background port forwarding.
+```
+ssh -L 9999:localhost:8888 -f -N matteo@192.168.1.57
+```
