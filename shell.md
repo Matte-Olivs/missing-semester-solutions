@@ -1,5 +1,10 @@
 ## Course Overview + Introduction to the Shell
 
+
+For this course, you need to be using a Unix shell like Bash or ZSH. If you are on Linux or macOS, you don’t have to do anything special. If you are on Windows, you need to make sure you are not running cmd.exe or PowerShell; you can use Windows Subsystem for Linux or a Linux virtual machine to use Unix-style command-line tools. To make sure you’re running an appropriate shell, you can try the command echo $SHELL. If it says something like /bin/bash or /usr/bin/zsh, that means you’re running the right program.
+- I have set up the Windows Subsystem for Linux as well as Linux Mint-Cinnamon using VirtualBox
+
+
 What does the -l flag to ls do? Run ls -l / and examine the output. What do the first 10 characters of each line mean? (Hint: man ls):
 - The -l flag returns the name of each file in the current directory along with informations about them: permissions, user who created the file, date and hour of creation.
 
