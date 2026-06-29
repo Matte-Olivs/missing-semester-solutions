@@ -85,3 +85,6 @@ printf("%s\n", greeting);
 ```
 
 - To correct this, just move free(greeting) at the end
+
+
+Use strace (Linux) or dtruss (macOS) to trace the system calls made by a command like ls -l. What system calls is it making? Try tracing a more complex program and see what files it opens.
