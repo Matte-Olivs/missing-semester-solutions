@@ -60,7 +60,7 @@ Student 1: id=1007
 ERROR: Student 1's ID was corrupted! Expected 1002, got 1007
 ```
 
- - The bug is the for statement in line 23, because the student scores are 3, not 4:
+- The bug is the for statement in line 23, because the student scores are 3, not 4:
 
 ```
 for (int i = 0; i < 4; i++) {
@@ -74,7 +74,7 @@ correct: for (int i = 0; i < 3; i++)
 Debug a memory error with AddressSanitizer. Save this as uaf.c.
 First compile and run without sanitizers: gcc uaf.c -o uaf && ./uaf. It may appear to work. Now compile with AddressSanitizer: gcc -fsanitize=address -g uaf.c -o uaf && ./uaf. Read the error report. What bug does ASan find? Fix the issue it identifies.
 
- - The greeting array gets used after its memory is freed: 
+- The greeting array gets used after its memory is freed: 
 ```
 free(greeting);
 
@@ -88,3 +88,16 @@ printf("%s\n", greeting);
 
 
 Use strace (Linux) or dtruss (macOS) to trace the system calls made by a command like ls -l. What system calls is it making? Try tracing a more complex program and see what files it opens.
+
+- Some of the system calls are:
+```
+→ statx
+→ getxattr
+→ fstat
+→ read 
+→ write
+```
+
+### Profiling
+
+Use perf stat to get basic performance statistics for a program of your choice. What do the different counters mean?
