@@ -98,6 +98,29 @@ Use strace (Linux) or dtruss (macOS) to trace the system calls made by a command
 → write
 ```
 
+
 ### Profiling
 
 Use perf stat to get basic performance statistics for a program of your choice. What do the different counters mean?
+```
+→ task-clock: time used by the CPU
+→ context-switches: times the process was suspended to run another given one
+→ cpu-migrations: how many times the process was migrated from a physical CPU core to another
+→ page-faults: RAM interactions and efficiency
+→ cycles: counts the CPU clock cicles
+```
+
+
+Profile with perf record. Save this as slow.c. Compile with debug symbols: gcc -g -O2 slow.c -o slow -lm. Run perf record -g ./slow, then perf report to see where time is spent. Try generating a flame graph using the flamegraph scripts.
+- See ```flamegraph.svg```
+
+
+Use hyperfine to benchmark two different implementations of the same task (e.g., find vs fd, grep vs ripgrep, or two versions of your own code).
+- I tried with find and fd; fd is a much faster and refined version of find, so hyperfine took microseconds to finish the benchmark, while it took seconds to finish with find.
+
+
+Use htop to monitor your system while running a resource-intensive program. Try using taskset to limit which CPUs a process can use: taskset --cpu-list 0,2 stress -c 3. Why doesn’t stress use three CPUs?
+- Because ```taskset --cpu-list 0,2``` selects the processor 0 and 2, in order to select all 3(core 0, 1 and 2) we have to use: ```--cpu-list 0-2```
+
+
+A common issue is that a port you want to listen on is already taken by another process. Learn how to discover that process: First execute python -m http.server 4444 to start a minimal web server on port 4444. On a separate terminal run ss -tlnp | grep 4444 to find the process. Terminate it with kill <PID>.
