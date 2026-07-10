@@ -63,7 +63,12 @@ Write a script that takes a filename as an argument ($1) and checks whether the 
 ```
 #!/usr/bin/env bash
 
-if [ -f “$1” ]; then echo "File found"; else echo "File not found";fi
+if [ -f “$1” ]; 
+then 
+	echo "File found"; 
+else 
+	echo "File not found";
+fi
 ```
 
 
@@ -82,9 +87,9 @@ Write a command that copies a file to a backup with today’s date in the filena
 
 if [ -f "$1.$2" ];
 then 
- cp "$1.$2" "$1_$(date +%Y-%m-%d).$2"
+	cp "$1.$2" "$1_$(date +%Y-%m-%d).$2"
 else 
- echo "File not found"
+	echo "File not found"
 fi
 ```
 
