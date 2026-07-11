@@ -24,10 +24,10 @@ What was the commit message associated with the last modification to the collect
 ```
 Get the hash of the latest modification:
 
-git blame -l _config.yml | awk '{print $4, $5, $1}' | sort -V
+git blame -l _config.yml | awk '{print $4, $5, $1}' | sort 
 a2b53b74de299dcecfd04513525d35e5dc1a0a2c
 
-git show a2b53b74de299dcecfd04513525d35e5dc1a0a2c 
+git show a2b53b74de299dcecfd04513525d35e5dc1a0a2c
 
 Author: Anish Athalye <me@anishathalye.com>
 Date:   Fri Jan 23 16:39:39 2026 -0500
