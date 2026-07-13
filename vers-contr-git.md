@@ -83,6 +83,49 @@ Like many command line tools, Git provides a configuration file (or dotfile) cal
 
 You can define global ignore patterns in ~/.gitignore_global after running git config --global core.excludesfile ~/.gitignore_global. This sets the location of the global ignore file that Git will use, but you still need to manually create the file at that path. Set up your global gitignore file to ignore OS-specific or editor-specific temporary files, like .DS_Store.
 
-- Some examples: ```/.DS_store```, ```/__pycache__```, ```.pyc``` 
+- Some examples: ```/.DS_store```, ```/__pycache__```, ```.pyc```
 
-p
+
+Practice resolving merge conflicts by simulating a collaborative scenario:
+
+1. Create a new repository with git init and create a file called recipe.txt with a few lines (e.g., a simple recipe).
+
+2. Commit it, then create two branches: git branch salty and git branch sweet.
+    
+3. In the salty branch, modify a line (e.g., change “1 cup sugar” to “1 cup salt”) and commit.
+
+4. In the sweet branch, modify the same line differently (e.g., change “1 cup sugar” to “2 cups sugar”). and commit.
+    
+5. Now switch to master and try git merge salty, then git merge sweet. What happens? Look at the contents of recipe.txt - what do the <<<<<<<, =======, and >>>>>>> markers mean?
+
+```
+$ git merge salty
+Updating c7457b3..f5f5e0f
+Fast-forward
+ recipe.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+$ git merge sweet
+Auto-merging recipe.txt
+CONFLICT (content): Merge conflict in recipe.txt
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+- ```<<<<<<<``` indicates the head branch
+- ```=======``` separates the two conflicting branches
+- ```>>>>>>>``` indicates the branch which is causing the conflict
+
+6. Resolve the conflict by editing the file to keep the content you want, removing the conflict markers, and completing the merge with git add and git commit (or git merge --continue). Alternatively, try using git mergetool to resolve the conflict with a graphical or terminal-based merge tool.
+
+
+7. Use git log --graph --oneline to visualize the merge history you just created.
+
+```
+$ git log --graph --oneline
+*   60c33a2 (HEAD -> master) Merge branch 'sweet'
+|\  
+| * b42d2be (sweet) New instructions for sugar
+* | f5f5e0f (salty) Add salt in the recipe(for brownies? Hm, ok)
+|/  
+* c7457b3 Added the recipe for brownies
+```
