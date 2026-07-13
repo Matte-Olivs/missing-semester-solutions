@@ -64,3 +64,25 @@ git push --force --mirror origin
 
 
 Clone some repository from GitHub, and modify one of its existing files. What happens when you do git stash? What do you see when running git log --all --oneline? Run git stash pop to undo what you did with git stash. In what scenario might this be useful?
+
+- git stash saves the current local modifications and index and returns the current working directory to the state previous to the changes. When running git log --all --oneline I get:
+
+```
+a0d81d6 (refs/stash) WIP on main: f176e92 Added new exercises for vers-contr-git.md
+061332c index on main: f176e92 Added new exercises for vers-contr-git.md
+f176e92 (HEAD -> main, origin/main, origin/HEAD) Added new exercises for vers-contr-git.md
+```
+
+- git stash might be useful when checking for bugs in a newly implemented piece of code; we can save our work, and see if the bug comes from the latter.
+
+
+Like many command line tools, Git provides a configuration file (or dotfile) called ~/.gitconfig. Create an alias in ~/.gitconfig so that when you run git graph, you get the output of git log --all --graph --decorate --oneline. You can do this by directly editing the ~/.gitconfig file, or you can use the git config command to add the alias. Information about git aliases can be found here.
+
+- ```git config --global alias.graph 'log --all --graph --decorate --oneline'```
+
+
+You can define global ignore patterns in ~/.gitignore_global after running git config --global core.excludesfile ~/.gitignore_global. This sets the location of the global ignore file that Git will use, but you still need to manually create the file at that path. Set up your global gitignore file to ignore OS-specific or editor-specific temporary files, like .DS_Store.
+
+- Some examples: ```/.DS_store```, ```/__pycache__```, ```.pyc``` 
+
+p
