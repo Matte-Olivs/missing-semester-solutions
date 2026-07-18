@@ -90,12 +90,16 @@ Practice resolving merge conflicts by simulating a collaborative scenario:
 
 1. Create a new repository with git init and create a file called recipe.txt with a few lines (e.g., a simple recipe).
 
+
 2. Commit it, then create two branches: git branch salty and git branch sweet.
     
+
 3. In the salty branch, modify a line (e.g., change “1 cup sugar” to “1 cup salt”) and commit.
+
 
 4. In the sweet branch, modify the same line differently (e.g., change “1 cup sugar” to “2 cups sugar”). and commit.
     
+
 5. Now switch to master and try git merge salty, then git merge sweet. What happens? Look at the contents of recipe.txt - what do the <<<<<<<, =======, and >>>>>>> markers mean?
 
 ```
@@ -114,6 +118,7 @@ Automatic merge failed; fix conflicts and then commit the result.
 - ```<<<<<<<``` indicates the head branch
 - ```=======``` separates the two conflicting branches
 - ```>>>>>>>``` indicates the branch which is causing the conflict
+
 
 6. Resolve the conflict by editing the file to keep the content you want, removing the conflict markers, and completing the merge with git add and git commit (or git merge --continue). Alternatively, try using git mergetool to resolve the conflict with a graphical or terminal-based merge tool.
 
