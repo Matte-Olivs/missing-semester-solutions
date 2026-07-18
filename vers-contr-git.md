@@ -43,7 +43,7 @@ One common mistake when learning Git is to commit large files that should not be
 - First, let's add a sensitive file:
 
 ```
-vim super-secret-file.text
+vim super-secret-file.txt
 
 git add .
 
