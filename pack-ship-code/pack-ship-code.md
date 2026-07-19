@@ -28,3 +28,48 @@ if [ -n "${_OLD_VIRTUAL_PYTHONHOME:-}" ]; then
     export PYTHONHOME;
     unset _OLD_VIRTUAL_PYTHONHOME;
 fi;
+```
+
+Create a Python package with a pyproject.toml and install it in a virtual environment. Create a lockfile and inspect it.
+
+- In hello.py:
+
+```
+def cli():
+    print("Hello, world!")
+
+
+if __name__ == "__main__":
+    cli()
+```
+
+- In pyproject.toml:
+```
+[project]
+name = "hello"
+version = "0.1.0"
+description = "A hello world library"
+dependencies = []
+
+[project.scripts]
+hello = "hello:cli"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+```
+
+- Then:
+
+``` 
+activate the virtual env:
+source venv/bin/activate
+
+build the program and install it:
+uv build
+uv pip install ./hello-0.1.0-py3-none-any.whl
+
+→ now we can type hello in our terminal to use the program anywhere
+``` 
+
+
+Install Docker and use it to build the Missing Semester class website locally using docker compose.
