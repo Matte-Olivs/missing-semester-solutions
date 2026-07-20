@@ -30,6 +30,7 @@ if [ -n "${_OLD_VIRTUAL_PYTHONHOME:-}" ]; then
 fi;
 ```
 
+
 Create a Python package with a pyproject.toml and install it in a virtual environment. Create a lockfile and inspect it.
 
 - In hello.py:
@@ -69,6 +70,10 @@ uv build
 uv pip install ./hello-0.1.0-py3-none-any.whl
 
 → now we can type hello in our terminal to use the program anywhere
+
+We can run uv lock to create the lockfile, inside we can find:
+
+requires-python = ">=3.12" (no other dependencies in this case)
 ``` 
 
 
