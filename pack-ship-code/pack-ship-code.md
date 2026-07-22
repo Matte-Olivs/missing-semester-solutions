@@ -78,3 +78,16 @@ requires-python = ">=3.12" (no other dependencies in this case)
 
 
 Install Docker and use it to build the Missing Semester class website locally using docker compose.
+
+```
+1) clone the GitHub repository locally:
+git clone git@github.com:missing-semester/missing-semester.git
+
+2) cd in the folder: 
+cd missing-semester
+
+3) run the website locally: 
+docker compose up --build
+
+4) access the website via: http://0.0.0.0:4000 (this has been specified in the docker_compose.yml file created by the authors of the repository)
+``` 
