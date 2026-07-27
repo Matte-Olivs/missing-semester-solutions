@@ -95,7 +95,20 @@ docker compose up --build
 
 Write a Dockerfile for a simple Python application. Then write a docker-compose.yml that runs your application alongside a Redis cache.
 
-- See the flask-app directory
+- See the flask-app directory.
 
 
 Publish a Python package to TestPyPI (don’t publish to the real PyPI unless it’s worth sharing!). Then build a Docker image with said package and push it to ghcr.io.
+
+- ```uv publish --publish-url https://test.pypi.org/legacy/``` 
+- ```docker build -t my-package:v1 .```
+- pushing to ghcr.io:
+
+```
+docker tag my-package:v1 ghcr.io/Matte-Olivs/my-package:v1
+docker push ghcr.io/Matte-Olivs/my-package:v1 
+```
+
+
+Make a website using GitHub Pages. Extra (non-)credit: configure it with a custom domain.
+- Available at https://matte-olivs.github.io/.
