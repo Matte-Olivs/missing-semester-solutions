@@ -89,5 +89,13 @@ cd missing-semester
 3) run the website locally: 
 docker compose up --build
 
-4) access the website via: http://0.0.0.0:4000 (this has been specified in the docker_compose.yml file created by the authors of the repository)
+4) access the website via: http://0.0.0.0:4000 (this has been specified in the docker_compose.yml, file created by the authors of the repository)
 ``` 
+
+
+Write a Dockerfile for a simple Python application. Then write a docker-compose.yml that runs your application alongside a Redis cache.
+
+- See the flask-app directory
+
+
+Publish a Python package to TestPyPI (don’t publish to the real PyPI unless it’s worth sharing!). Then build a Docker image with said package and push it to ghcr.io.
