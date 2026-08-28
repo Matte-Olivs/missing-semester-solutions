@@ -86,6 +86,18 @@ You can define global ignore patterns in ~/.gitignore_global after running git c
 - Some examples: ```/.DS_store```, ```/__pycache__```, ```.pyc```
 
 
+Fork the repository for the class website, find a typo or some other improvement you can make, and submit a pull request on GitHub (you may want to look at this). Please only submit PRs that are useful (don’t spam us, please!). If you can’t find an improvement to make, you can skip this exercise.
+
+1) fork the class repository.
+2) git clone https://github.com/Matte-Olivs/missing-semester.git
+3) git switch -c update fix/markdown-syntax
+4) add the changes: I've added a missing a word and fixed some minor markdown syntax error.
+5) git add .
+6) git commit -am "Add a missing word and fixed the markdown syntax"
+7) git push -u origin fix/markdown-syntax
+8) on the new branch on GitHub, submit the pull request
+
+
 Practice resolving merge conflicts by simulating a collaborative scenario:
 
 1. Create a new repository with git init and create a file called recipe.txt with a few lines (e.g., a simple recipe).
