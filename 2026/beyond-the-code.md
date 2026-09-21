@@ -21,3 +21,4 @@ Browse the source code of a well-known project (e.g., Redis or curl). Find examp
 
 Pick an open-source project you’re interested in and look at its recent commit history (git log). Find one commit with a good message that explains why the change was made, and one with a weak message that only describes what changed. For the weak one, look at the diff (git show <hash>) and try to write a better commit message following the Problem → Solution → Implications structure. Notice how much work is required to reassemble the necessary context after the fact!
 
+- 
