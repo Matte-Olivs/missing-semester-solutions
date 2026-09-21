@@ -5,11 +5,19 @@ Browse the source code of a well-known project (e.g., Redis or curl). Find examp
 - From the official Mozilla FireFox GitHub repository:
 
 ```
-else:
-                 try:
-                     names.append(x509.IPAddress(ipaddress.ip_address(name)))
--                # TODO: specify specific exceptions here
--                except:  # noqa: E722
-+                except ValueError:
-                     names.append(x509.DNSName(name))
+    /**
+     * Request a screenshot of the full (scrollable) web page currently being rendered, including content outside the
+     * currently visible viewport.
+     *
+     * @param onFinish A callback invoked with the captured [Bitmap], or `null` if the capture failed. Important for
+     *   engine-gecko: Make sure not to reference the context or view in this callback to prevent memory leaks:
+     *   https://bugzilla.mozilla.org/show_bug.cgi?id=1678364
+     */
+    fun captureFullPage(onFinish: (Bitmap?) -> Unit) = Unit
 ```
+
+- Without this comment we would not know the exact purpose of the function, as well as the underlying bug linked in the given external documentation.
+
+
+Pick an open-source project you’re interested in and look at its recent commit history (git log). Find one commit with a good message that explains why the change was made, and one with a weak message that only describes what changed. For the weak one, look at the diff (git show <hash>) and try to write a better commit message following the Problem → Solution → Implications structure. Notice how much work is required to reassemble the necessary context after the fact!
+
