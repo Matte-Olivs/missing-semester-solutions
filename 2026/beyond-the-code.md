@@ -16,9 +16,15 @@ Browse the source code of a well-known project (e.g., Redis or curl). Find examp
     fun captureFullPage(onFinish: (Bitmap?) -> Unit) = Unit
 ```
 
-- Without this comment we would not know the exact purpose of the function, as well as the underlying bug linked in the given external documentation.
+- Without this comment, a developer might inadvertently introduce a memory leak by referencing the context or view inside the callback, repeating a past mistake tracked in the linked Bugzilla issue.
 
 
 Pick an open-source project you’re interested in and look at its recent commit history (git log). Find one commit with a good message that explains why the change was made, and one with a weak message that only describes what changed. For the weak one, look at the diff (git show <hash>) and try to write a better commit message following the Problem → Solution → Implications structure. Notice how much work is required to reassemble the necessary context after the fact!
 
-- 
+- From the official curl GitHub repository:
+
+```
+Commit 198012e
+committed on Mar 5, 2013
+imap: Added support for list command
+```
