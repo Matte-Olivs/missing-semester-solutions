@@ -45,7 +45,7 @@ Compare the READMEs of three GitHub projects with 1000+ stars. Are all of them e
 
 
 Find an open issue on a project you use (check the “good first issue” or “help wanted” labels if they have it). Evaluate the issue against the criteria from the lecture: does it seem like it values the maintainer’s time and contains all the information necessary to debug it, or do you expect that the maintainer may need to go multiple rounds of questions with the submitter to get to the root problem?
-- I've found this neat example, from the Redis GitHub issues page. It's definitely well-written, but as a maintainer pointed out, it's missing:
+- I've found this neat example, from the Redis GitHub issues page: https://github.com/redis/redis/issues/15826. It's definitely well-written, but as a maintainer pointed out, it's missing:
 
 → Steps to reproduce
 
@@ -53,4 +53,21 @@ Find an open issue on a project you use (check the “good first issue” or “
 
 → Environment details
 
-More details at: https://github.com/redis/redis/issues/15826
+
+Think of a bug you’ve encountered in software you use (or find one in an issue tracker). Practice creating a minimal reproducible example: strip away everything unrelated to the bug until you have the smallest case that still demonstrates the problem. Write up what you removed and why.
+- I've developed a small card game using Python; one issue was a specific if-else case where the player index 0 was causing unwanted behaviour by evaluating to "False". I solved the issue by testing that specific part of the game logic using the terminal instead of the game GUI, cutting everything else: event handlers, rendering code, card-dealing logic, and game state managers; these where just noise and did not add useful information about the bug. 
+
+```
+if player.call: → wrong, if the call is 0 it will evaluate to false
+        
+if player.call != None: → correct version
+    has_called += 1
+```
+
+
+Go to Stack Overflow and find a question in a technology you know that has a highly-voted answer. Then find one that was closed or heavily downvoted. Compare them against the advice from the lecture; was it predictable which question would get better answers?
+
+→ The first answer is highly-voted, because it's simple, clean and easy to understand: 
+https://stackoverflow.com/questions/292357/what-is-the-difference-between-git-pull-and-git-fetch
+
+→ I have not found any heavily downvoted answers, but some do get the occasional negative votes for being unrelated, straight up wrong and/or not adding anything useful when compared to the previous ones.
